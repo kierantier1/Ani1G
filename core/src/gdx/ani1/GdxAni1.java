@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.Input;
 
 public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
 
@@ -54,6 +55,17 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
         }
         System.out.println(nPos + " " + nFrame);
         trTemp = araniVlad[nPos].getKeyFrame(nFrame, true);
+        
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+            
+        } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+            
+        } if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+            
+        } if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            
+        }
+        
         batch.begin();
         batch.draw(trTemp, 100, 100);
         batch.end();
