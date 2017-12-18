@@ -20,6 +20,7 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
     TextureRegion trTemp; // a single temporary texture region
     int fW, fH, fSx, fSy; // height and width of SpriteSheet image - and the starting upper coordinates on the Sprite Sheet
     int nFrame, nPos;
+    int nX = 100, nY = 100;
 
     @Override
     public void create() {
@@ -53,21 +54,24 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
         if (nFrame > 7) {
             nFrame = 0;
         }
-        System.out.println(nPos + " " + nFrame);
+        //System.out.println(nPos + " " + nFrame);
         trTemp = araniVlad[nPos].getKeyFrame(nFrame, true);
-        
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            
+            System.out.println("Move Left");
+            nX = nX-=5;
         } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            
+            System.out.println("Move Right");
+            nX = nX+=5;
         } if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            
+            System.out.println("Move Up");
+            nY = nY+=5;
         } if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            
+            System.out.println("Move Down");
+            nY = nY-=5;
         }
         
         batch.begin();
-        batch.draw(trTemp, 100, 100);
+        batch.draw(trTemp, nX, nY);
         batch.end();
     }
 
@@ -75,7 +79,7 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
     public boolean keyDown(int keycode) {
         //Keypad 0-9 is Keycode 96 to 105 in unicode, keycode 0 is 144
         System.out.println("keydown " + keycode);
-        if (keycode - 144 < 8) {
+        if (keycode - 144 < 8 && keycode - 144 > 0) {
             nPos = keycode - 144;
             System.out.println(nPos);
         }

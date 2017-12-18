@@ -1,0 +1,5 @@
+December 18, 2017
+-Purpose:  to implement movement into the animation
+-ArrayOutofbounds error:  because keycode is reading the arrow keys as well, fixed.
+-It moves, but animation is static right now.  Working on co-ordinating
+-//Theory:  Use the final position - original position to find direction//
