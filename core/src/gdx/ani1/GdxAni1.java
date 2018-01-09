@@ -54,20 +54,33 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
         if (nFrame > 7) {
             nFrame = 0;
         }
-        //System.out.println(nPos + " " + nFrame);
+        System.out.println(nPos + " " + nFrame);
+        
         trTemp = araniVlad[nPos].getKeyFrame(nFrame, true);
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            System.out.println("Move Left");
-            nX = nX-=5;
+        /* Spritesheet Cheat Sheet
+        * 0 - Facing East
+        * 1 - Facing North
+        * 2 - Facing North-East
+        * 3 - Facing North-West
+        * 4 - Facing South
+        * 5 - Facing South-East
+        * 6 - Facing South-West
+        * 7 - Facing West
+        */
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.UP)){
+            nPos = 3;
+        } if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+            //nX = nX-=5;
+            nPos = 7;
         } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            System.out.println("Move Right");
-            nX = nX+=5;
+            //nX = nX+=5;
+            nPos = 0;
         } if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            System.out.println("Move Up");
-            nY = nY+=5;
+            //nY = nY+=5;
+            nPos = 1;
         } if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            System.out.println("Move Down");
-            nY = nY-=5;
+            //nY = nY-=5;
+            nPos = 4;
         }
         
         batch.begin();
