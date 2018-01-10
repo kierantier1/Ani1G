@@ -13,4 +13,9 @@ January 9, 2018
 -It seems to be stuck on the first line of sprites in the sheet.  Not sure how to fix it.  Working on it
 -Hypothesis confirmed. nPos remains the same, while nFrame moves from 0-7
 -nPos is now manipulated through the arrow keys, but only works for Up, right, left and down
--
+
+January 10, 2018
+-The animation faces the right way when the arrow keys are pressed, but it is not going through the frames.  
+-Changing the 5.2f in the Animation declaration makes it better, but it has to be < 1
+-It looks really choppy, can't find the right number
+-Moving Diagonally triggers the nFrame++ for both the diagonal and the direction you're going in, making him go super fast

@@ -41,7 +41,7 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
                 sprVlad = new Sprite(txSheet, fSx, fSy, fW, fH);
                 arSprVlad[j] = new Sprite(sprVlad);
             }
-            araniVlad[i] = new Animation(5.2f, arSprVlad);
+            araniVlad[i] = new Animation(0.4f, arSprVlad);
 
         }
     }
@@ -50,13 +50,13 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
     public void render() {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        nFrame++;
+        
         if (nFrame > 7) {
             nFrame = 0;
         }
-        System.out.println(nPos + " " + nFrame);
+        //System.out.println(nPos + " " + nFrame);
         
-        trTemp = araniVlad[nPos].getKeyFrame(nFrame, true);
+        trTemp = araniVlad[nPos].getKeyFrame(nFrame, false);
         /* Spritesheet Cheat Sheet
         * 0 - Facing East
         * 1 - Facing North
@@ -67,21 +67,41 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
         * 6 - Facing South-West
         * 7 - Facing West
         */
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.UP)){
-            nPos = 3;
-        } if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            //nX = nX-=5;
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+            nX = nX-=1;
             nPos = 7;
+            nFrame++;
         } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            //nX = nX+=5;
+            nX = nX+=1;
             nPos = 0;
+            if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+                nFrame++;
+            }
         } if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            //nY = nY+=5;
+            nY = nY+=1;
             nPos = 1;
+            if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+                nFrame++;
+            }
         } if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            //nY = nY-=5;
+            nY = nY-=1;
             nPos = 4;
-        }
+            if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+                nFrame++;
+            }
+        } if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.UP)){
+            nPos = 3;
+            nFrame++;
+        } if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            nPos = 6;
+            nFrame++;
+        } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && Gdx.input.isKeyPressed(Input.Keys.UP)){
+            nPos = 2;
+            nFrame++;
+        } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            nPos = 5;
+            nFrame++;
+        } 
         
         batch.begin();
         batch.draw(trTemp, nX, nY);
@@ -90,13 +110,7 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        //Keypad 0-9 is Keycode 96 to 105 in unicode, keycode 0 is 144
-        System.out.println("keydown " + keycode);
-        if (keycode - 144 < 8 && keycode - 144 > 0) {
-            nPos = keycode - 144;
-            System.out.println(nPos);
-        }
-        return true;
+        return false;
     }
 
     @Override
