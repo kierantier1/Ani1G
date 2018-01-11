@@ -15,7 +15,7 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
 
     SpriteBatch batch;
     Sprite sprVlad;
-    Texture txSheet, txTemp, txOne;
+    Texture txSheet;
     Animation araniVlad[];
     TextureRegion trTemp; // a single temporary texture region
     int fW, fH, fSx, fSy; // height and width of SpriteSheet image - and the starting upper coordinates on the Sprite Sheet
@@ -85,16 +85,16 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
             nFrame++;
         } if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.UP)){
             nPos = 3;
-            nFrame++;
+            nFrame--;
         } if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             nPos = 6;
-            nFrame++;
+            nFrame--;
         } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && Gdx.input.isKeyPressed(Input.Keys.UP)){
             nPos = 2;
-            nFrame++;
+            nFrame--;
         } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             nPos = 5;
-            nFrame++;
+            nFrame--;
         } 
         
         batch.begin();
