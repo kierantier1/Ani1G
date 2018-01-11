@@ -41,7 +41,7 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
                 sprVlad = new Sprite(txSheet, fSx, fSy, fW, fH);
                 arSprVlad[j] = new Sprite(sprVlad);
             }
-            araniVlad[i] = new Animation(0.4f, arSprVlad);
+            araniVlad[i] = new Animation(0.5f, arSprVlad);
 
         }
     }
@@ -74,21 +74,15 @@ public class GdxAni1 extends ApplicationAdapter implements InputProcessor {
         } if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             nX = nX+=1;
             nPos = 0;
-            if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-                nFrame++;
-            }
+            nFrame++;
         } if(Gdx.input.isKeyPressed(Input.Keys.UP)){
             nY = nY+=1;
             nPos = 1;
-            if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-                nFrame++;
-            }
+            nFrame++;
         } if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             nY = nY-=1;
             nPos = 4;
-            if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-                nFrame++;
-            }
+            nFrame++;
         } if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.UP)){
             nPos = 3;
             nFrame++;
